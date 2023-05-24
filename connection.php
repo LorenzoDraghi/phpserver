@@ -5,13 +5,14 @@ $password = "root785!";
 $dbname = "voti";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password,$dbname);
+$conn = new mysqli($servername, $username, $password);
 
 // Check connection
-if (!$conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+if (!$conn) {
+  die("Connection failed: " . mysql_error());
 }
-
+$sql="use voti";
+$conn->query($sql);
 $sql="SELECT * FROM studenti";
 $result=$conn->query($sql);
 
